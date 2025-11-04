@@ -1,4 +1,4 @@
-package com.xtaskapp
+package com.app.xtaskapp
 
 import android.app.Application
 import com.facebook.react.PackageList
