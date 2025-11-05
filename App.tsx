@@ -10,6 +10,7 @@ const App = () => {
         <MyStack />  
       </NavigationContainer>   
   );
-};
+}; 
  
 export default App;
+ 

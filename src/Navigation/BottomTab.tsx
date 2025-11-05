@@ -6,7 +6,8 @@ import TaskScreen from '../screens/TaskScreen';
 import TeamScreen from '../screens/TeamScreen';
 import NotificationScreen from '../screens/NotificationScreen';
 import ProfileScreen from '../screens/ProfileScreen';
-
+import { colors } from '../colors/colors';
+ 
 const Tab = createBottomTabNavigator();
 
 export default function MyTabs() {
@@ -41,14 +42,14 @@ export default function MyTabs() {
                 source={require('../assets/images/booking.png')}
                 resizeMode="contain"
                 style={{
-                  width: 24,
+                  width: 28,
                   height: 24,
-                  tintColor: focused ? '#6C47FF' : '#777',
+                  tintColor: focused ? colors.primary : '#000000',
                 }}
-              />
+              />   
               <Text
                 style={{
-                  color: focused ? '#6C47FF' : '#999',
+                  color: focused ? colors.primary : '#999',
                   fontSize: 10,
                   marginTop: 4,
                   fontWeight: focused ? '600' : '400',
@@ -74,12 +75,12 @@ export default function MyTabs() {
                 style={{
                   width: 24,
                   height: 24,
-                  tintColor: focused ? '#6C47FF' : '#777',
+                  tintColor: focused ? colors.primary : '#777',
                 }}
               />
               <Text
                 style={{
-                  color: focused ? '#6C47FF' : '#999',
+                  color: focused ? colors.primary : '#999',
                   fontSize: 10,
                   marginTop: 4,
                   fontWeight: focused ? '600' : '400',
@@ -105,12 +106,12 @@ export default function MyTabs() {
                 style={{
                   width: 24,
                   height: 24,
-                  tintColor: focused ? '#6C47FF' : '#777',
+                  tintColor: focused ? colors.primary : '#777',
                 }}
               />
               <Text
                 style={{
-                  color: focused ? '#6C47FF' : '#999',
+                  color: focused ? colors.primary : '#999',
                   fontSize: 10,
                   marginTop: 4,
                   fontWeight: focused ? '600' : '400',
@@ -136,12 +137,12 @@ export default function MyTabs() {
                 style={{
                   width: 24,
                   height: 24,
-                  tintColor: focused ? '#6C47FF' : '#777',
+                  tintColor: focused ? colors.primary : '#777',
                 }}
               />
               <Text
                 style={{
-                  color: focused ? '#6C47FF' : '#999',
+                  color: focused ? colors.primary : '#999',
                   fontSize: 10,
                   marginTop: 4,
                   fontWeight: focused ? '600' : '400',
@@ -156,4 +157,4 @@ export default function MyTabs() {
     </Tab.Navigator>
   );
 }
- 
+  

@@ -8,6 +8,8 @@ import {
   FlatList,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import Header from '../components/Header';
+import { colors } from '../colors/colors';
 
 const teamData = [
   {
@@ -111,9 +113,7 @@ const TeamScreen = () => {
   return (
     <View style={styles.container}>
       {/* Gradient Header */}
-      <LinearGradient colors={['#9c27b0', '#673ab7']} style={styles.headerContainer}>
-        <Text style={styles.headerTitle}>Team List</Text>
-      </LinearGradient>
+       <Header title={'Team List'}/>   
 
       {/* FlatList for team members */}
       <FlatList
@@ -137,18 +137,7 @@ export default TeamScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#faf7fd',
-  },
-  headerContainer: {
-    height: 110,
-    justifyContent: 'flex-end',
-    paddingHorizontal: 20,
-    paddingBottom: 20,
-  },
-  headerTitle: {
-    color: '#fff',
-    fontSize: 24,
-    fontWeight: '700',
+    backgroundColor: colors.background,
   },
   card: {
     backgroundColor: '#fff',

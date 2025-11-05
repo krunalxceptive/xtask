@@ -10,17 +10,17 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/Feather'; // Main icon set
 import { colors } from '../colors/colors';
+import Header from '../components/Header';
+import { useNavigation } from '@react-navigation/native';
 
 const ProfileScreen = () => {
-  return (
+ 
+  const navigation = useNavigation();
+ 
+  return ( 
     <View style={styles.container}>
       {/* Gradient Header */}
-      <LinearGradient
-        colors={['#9c27b0', '#673ab7']}
-        style={styles.headerContainer}
-      >
-        <Text style={styles.headerTitle}>Profile</Text>
-      </LinearGradient>
+     <Header title={'Profile'}/>   
 
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -49,15 +49,17 @@ const ProfileScreen = () => {
 
         {/* Options */}
         <View style={styles.optionContainer}>
-          <TouchableOpacity style={styles.option}>
-            <View style={styles.optionLeft}>
+       
+          <TouchableOpacity style={styles.option} onPress={() => navigation.navigate('EditProfile')} >
+            <View style={styles.optionLeft}> 
               <Icon name="edit-3" size={20} color="#000" />
               <Text style={styles.optionText}>Edit profile</Text>
             </View>
             <Icon name="chevron-right" size={20} color="#000" />
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.option}>
+
+          <TouchableOpacity style={styles.option} onPress={() => navigation.navigate('TermsConditions')} >
             <View style={styles.optionLeft}>
               <Icon name="file-text" size={20} color="#000" />
               <Text style={styles.optionText}>Terms & condition</Text>
@@ -65,7 +67,7 @@ const ProfileScreen = () => {
             <Icon name="chevron-right" size={20} color="#000" />
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.option}>
+          <TouchableOpacity style={styles.option} onPress={() => navigation.navigate('PrivacyScreen')}> 
             <View style={styles.optionLeft}>
               <Icon name="shield" size={20} color="#000" />
               <Text style={styles.optionText}>Privacy policy</Text>
@@ -73,7 +75,7 @@ const ProfileScreen = () => {
             <Icon name="chevron-right" size={20} color="#000" />
           </TouchableOpacity>
 
-          <TouchableOpacity style={[styles.option, { borderBottomWidth: 0 }]}>
+          <TouchableOpacity onPress={() => navigation.navigate('Login')} style={[styles.option, { borderBottomWidth: 0 }]}>
             <View style={styles.optionLeft}>
               <Icon name="log-out" size={20} color="#f44336" />
               <Text style={[styles.optionText, { color: '#f44336' }]}>
@@ -92,18 +94,7 @@ export default ProfileScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#faf7fd',
-  },
-  headerContainer: {
-    height: 110,
-    justifyContent: 'flex-end',
-    paddingHorizontal: 20,
-    paddingBottom: 20,
-  },
-  headerTitle: {
-    color: '#fff',
-    fontSize: 24,
-    fontWeight: '700',
+    backgroundColor: colors.background,
   },
   avatar: {
     width: 60,

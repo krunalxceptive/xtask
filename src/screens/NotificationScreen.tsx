@@ -6,6 +6,8 @@ import {
   FlatList,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import Header from '../components/Header';
+import { colors } from '../colors/colors';
 
 const notifications = [
   {
@@ -57,11 +59,8 @@ const NotificationScreen = () => {
   return (
     <View style={styles.container}>
       {/* Gradient Header */}
-      <LinearGradient
-        colors={['#9c27b0', '#673ab7']}
-        style={styles.headerContainer}>
-        <Text style={styles.headerTitle}>Notification</Text>
-      </LinearGradient>
+   
+       <Header title={'Notification'}/>  
 
       {/* FlatList for Notifications */}
       <FlatList
@@ -80,21 +79,9 @@ export default NotificationScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#faf7fd'
+    backgroundColor: colors.background
   },
-  headerContainer: {
-    height: 110,
-    justifyContent: 'flex-end',
-    paddingHorizontal: 20,
-    paddingBottom: 20,
-    borderBottomLeftRadius: 15,
-    borderBottomRightRadius: 15,
-  },
-  headerTitle: {
-    color: '#fff',
-    fontSize: 24,
-    fontWeight: '700',
-  },
+  
   listContainer: {
     paddingVertical: 15,
     paddingBottom: 120,
