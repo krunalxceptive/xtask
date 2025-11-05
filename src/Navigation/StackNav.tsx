@@ -9,6 +9,9 @@ import EditProfile from '../screens/EditProfile';
 import TermsConditions from '../screens/TermsConditions';
 import PrivacyScreen from '../screens/PrivacyScreen';
 import AddTask from '../screens/AddTask';
+import TaskDetails from '../screens/TaskDetails';
+import AddMember from '../screens/AddMember';
+import AddMannual from '../screens/AddMannual';
 
 const Stack = createStackNavigator();
 
@@ -22,11 +25,14 @@ function MyStack() {
       <Stack.Screen name="EditProfile" component={EditProfile} />
       <Stack.Screen name="TermsConditions" component={TermsConditions} />
       <Stack.Screen name="PrivacyScreen" component={PrivacyScreen} />
-      <Stack.Screen name="AddTask" component={AddTask} />  
+      <Stack.Screen name="AddTask" component={AddTask} />
+      <Stack.Screen name="TaskDetails" component={TaskDetails} />
+      <Stack.Screen name="AddMember" component={AddMember} />
+       <Stack.Screen name="AddMannual" component={AddMannual} />
     </Stack.Navigator>  
-  );
+  );  
 }
-
+ 
 export default MyStack
 
 

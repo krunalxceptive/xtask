@@ -59,27 +59,28 @@ const TaskScreen = () => {
   const filteredTasks = tasks.filter(item => item.status === activeTab);
 
   const renderTask = ({ item }) => (
-    <View style={styles.taskCard}>
-      <View
-        style={{
-          height: '100%',
-          width: 10,
-          backgroundColor: colors.gray,
-          borderTopLeftRadius: 12, 
-          borderBottomLeftRadius: 12
-        }}
-      ></View>
+    <TouchableOpacity activeOpacity={0.7} onPress={() => navigation.navigate('TaskDetails')}>
+      <View style={styles.taskCard}>
+        <View
+          style={{
+            height: '100%',
+            width: 10,
+            backgroundColor: colors.gray,
+            borderTopLeftRadius: 12,
+            borderBottomLeftRadius: 12,
+          }}
+        ></View>
 
-       
-      <View style={{ flex: 1, padding: 16 }}>
-        <Text style={styles.taskTitle}>{item.title}</Text>
-        <View style={styles.dateRow}>
-          <Ionicons name="calendar-outline" size={16} color="#666" />
-          <Text style={styles.taskDate}>{item.date}</Text>
+        <View style={{ flex: 1, padding: 16 }}>
+          <Text style={styles.taskTitle}>{item.title}</Text>
+          <View style={styles.dateRow}>
+            <Ionicons name="calendar-outline" size={16} color="#666" />
+            <Text style={styles.taskDate}>{item.date}</Text>
+          </View>
         </View>
-      </View> 
-      <Image source={{ uri: item.image }} style={styles.avatar} />
-    </View>
+        <Image source={{ uri: item.image }} style={styles.avatar} />
+      </View>
+    </TouchableOpacity>
   );
 
   return (

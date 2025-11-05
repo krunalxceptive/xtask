@@ -21,22 +21,22 @@ const ProfileScreen = () => {
     <View style={styles.container}>
       {/* Gradient Header */}
      <Header title={'Profile'}/>   
-
+ 
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 40 }}
-      >
+      > 
         <View
-          style={{
-            marginHorizontal: 15,
-            marginTop: 15,
+          style={{ 
+            marginHorizontal: 15, 
+            marginTop: 15, 
             flexDirection: 'row',
             alignItems: 'center',
-          }}
+          }} 
         >
           <View style={{ height: 60, width: 60 }}>
             <Image
-              source={require('../assets/images/user-icon.png')}
+              source={require('../assets/images/user-icons.jpg')}
               style={styles.avatar} 
             />
           </View> 

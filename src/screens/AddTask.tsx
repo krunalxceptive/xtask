@@ -12,11 +12,13 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import Icon from 'react-native-vector-icons/Ionicons';
 import HeaderBack from '../components/HeaderBack';
 import { colors } from '../colors/colors';
+import { useNavigation } from '@react-navigation/native';
 
 const AddTask = () => {
   const [taskName, setTaskName] = useState('');
   const [description, setDescription] = useState('');
   const [status, setStatus] = useState('Pending');
+  const navigation = useNavigation();
 
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
@@ -70,7 +72,7 @@ const AddTask = () => {
 
         {/* Team Member */}
         <Text style={styles.label}>TEAM MEMBER</Text>
-        <TouchableOpacity style={styles.assignContainer}>
+        <TouchableOpacity onPress={() => navigation.navigate('AddMember')} style={styles.assignContainer}>
           <View style={styles.circle}>
             <Icon name="add" size={28} color="#999" />
           </View>

@@ -44,7 +44,7 @@ export default function MyTabs() {
                 style={{
                   width: 28,
                   height: 24,
-                  tintColor: focused ? colors.primary : '#000000',
+                  tintColor: focused ? colors.primary : colors.black,
                 }}
               />   
               <Text
@@ -75,7 +75,7 @@ export default function MyTabs() {
                 style={{
                   width: 24,
                   height: 24,
-                  tintColor: focused ? colors.primary : '#777',
+                  tintColor: focused ? colors.primary : colors.black,
                 }}
               />
               <Text
@@ -106,7 +106,7 @@ export default function MyTabs() {
                 style={{
                   width: 24,
                   height: 24,
-                  tintColor: focused ? colors.primary : '#777',
+                  tintColor: focused ? colors.primary : colors.black,
                 }}
               />
               <Text
@@ -137,7 +137,7 @@ export default function MyTabs() {
                 style={{
                   width: 24,
                   height: 24,
-                  tintColor: focused ? colors.primary : '#777',
+                  tintColor: focused ? colors.primary : colors.black,
                 }}
               />
               <Text
@@ -153,7 +153,7 @@ export default function MyTabs() {
             </View>
           ),
         }}
-      />
+      /> 
     </Tab.Navigator>
   );
 }
