@@ -75,7 +75,7 @@ const AddMember = () => {
       <TouchableOpacity
         style={[
           styles.card,
-          isSelected && { borderColor: colors.primary, borderWidth: 1.5 },
+          isSelected && { borderColor: colors.secondary, borderWidth: 1.5 },
         ]}
         onPress={() => toggleSelection(item.id)}
         activeOpacity={0.8}
@@ -158,6 +158,8 @@ const AddMember = () => {
 
       <LinearGradient
         colors={[colors.primary, colors.secondary]}
+         start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
         style={styles.doneButton}
       >
         <TouchableOpacity
@@ -236,7 +238,7 @@ const styles = StyleSheet.create({
     width: 26,
     height: 26,
     borderRadius: 13,
-    backgroundColor: colors.primary,
+    backgroundColor: colors.secondary,
     justifyContent: 'center',
     alignItems: 'center',
   },

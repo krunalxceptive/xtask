@@ -12,6 +12,7 @@ import AddTask from '../screens/AddTask';
 import TaskDetails from '../screens/TaskDetails';
 import AddMember from '../screens/AddMember';
 import AddMannual from '../screens/AddMannual';
+import UpdateTask from '../screens/UpdateTask';
 
 const Stack = createStackNavigator();
 
@@ -28,9 +29,10 @@ function MyStack() {
       <Stack.Screen name="AddTask" component={AddTask} />
       <Stack.Screen name="TaskDetails" component={TaskDetails} />
       <Stack.Screen name="AddMember" component={AddMember} />
-       <Stack.Screen name="AddMannual" component={AddMannual} />
+      <Stack.Screen name="AddMannual" component={AddMannual} />
+      <Stack.Screen name="UpdateTask" component={UpdateTask} />
     </Stack.Navigator>  
-  );  
+  );   
 }
  
 export default MyStack

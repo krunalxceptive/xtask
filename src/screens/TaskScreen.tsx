@@ -82,7 +82,7 @@ const TaskScreen = () => {
       </View>
     </TouchableOpacity>
   );
-
+ 
   return (
     <View style={styles.container}>
       <TouchableOpacity

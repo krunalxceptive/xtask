@@ -7,141 +7,220 @@ import {
   Image,
   TextInput,
   ScrollView,
+  KeyboardAvoidingView,
+  Platform,
 } from 'react-native';
 import HeaderBack from '../components/HeaderBack';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { colors } from '../colors/colors';
+import { useNavigation } from '@react-navigation/native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const TaskDetails = () => {
   const [selectedTab, setSelectedTab] = useState('Comments');
+  const navigation = useNavigation();
 
   return (
-    <View style={styles.container}>
-      <HeaderBack title="Task Details" />
-
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ paddingBottom: 80 }}
+    <SafeAreaView style={{ flex: 1 }} edges={['bottom']}>
+      <KeyboardAvoidingView
+        style={{ flex: 1, backgroundColor: colors.background }}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        keyboardVerticalOffset={Platform.OS === 'ios' ? 90 : 0}
       >
-        {/* Task Card */}
-        <View style={styles.taskCard}>
-          <View style={styles.taskTop}>
-            <View style={{ flex: 1 }}>
-              <Text style={styles.taskTitle}>xs loyalti</Text>
-              <Text style={styles.taskDate}>28 Dec 2024 , 10:44 AM</Text>
-              <Text style={styles.taskSubText}>xs loyalti</Text>
-            </View>
+        <View style={styles.container}>
+          <HeaderBack title="Task Details" />
 
-            <View style={{ marginRight: 12 }}>
-              <View style={styles.statusBadge}>
-                <Text style={styles.statusText}>Pending</Text>
-              </View>
- 
-              <View
-                style={{
-                  paddingVertical: 5,
-                  paddingHorizontal: 12,
-                  borderRadius: 8,
-                  marginTop: 8,
-                }}
-              >
-                <Text
-                  style={{
-                    color: colors.gray,
-                    fontSize: 13,
-                    fontWeight: '500',
-                    textAlign: 'center',
-                  }}
-                >
-                  Complete
-                </Text>
-              </View>
-            </View>
+          <ScrollView
+            showsVerticalScrollIndicator={false}
+            keyboardShouldPersistTaps="handled"
+            contentContainerStyle={{ paddingBottom: 100 }}
+          >
+            {/* Task Card */}
+            <View style={styles.taskCard}>
+              <View style={styles.taskTop}>
+                <View style={{ flex: 1 }}>
+                  <Text style={styles.taskTitle}>xs loyalti</Text>
+                  <Text style={styles.taskDate}>28 Dec 2024 , 10:44 AM</Text>
+                  <Text style={styles.taskSubText}>xs loyalti</Text>
+                </View>
 
-            <View style={styles.iconRow}>
-              <TouchableOpacity>
-                <Icon
-                  name="pencil"
-                  size={24}
-                  color={colors.primary}
-                  style={{ marginRight: 12 }}
-                />
-              </TouchableOpacity>
-              <TouchableOpacity style={{ marginTop: 12 }}>
-                <Icon name="delete" size={24} color={colors.primary} />
-              </TouchableOpacity>
-            </View>
-          </View>
-        </View>   
+                <View style={{ marginRight: 12 }}>
+                  <View style={styles.statusBadge}>
+                    <Text style={styles.statusText}>Pending</Text>
+                  </View>
 
-        {/* Tabs */}
-        <View style={styles.tabsWrapper}>
-          {['Comments', 'File', 'Team'].map(tab => (
-            <TouchableOpacity
-              key={tab}
-              style={styles.tabItem}
-              onPress={() => setSelectedTab(tab)}
-            >
-              <Text
-                style={[
-                  styles.tabText,
-                  selectedTab === tab && styles.tabActiveText,
-                ]}
-              >
-                {tab}
-              </Text>
-              {selectedTab === tab && <View style={styles.tabUnderline} />}
-            </TouchableOpacity>
-          ))}
-        </View>
-
-        {/* Comments Section */}
-        {selectedTab === 'Comments' && (
-          <View style={styles.commentSection}>
-            <Text style={styles.commentTitle}>Comments (1)</Text>
-
-            <View style={styles.commentCard}>
-              <View style={styles.commentHeader}>
-                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                  <Image
-                    source={{
-                      uri: 'https://i.pravatar.cc/150?img=3',
+                  <View
+                    style={{
+                      paddingVertical: 5,
+                      paddingHorizontal: 12,
+                      borderRadius: 8,
+                      marginTop: 8,
                     }}
-                    style={styles.avatar}
-                  />
-                  <View>
-                    <Text style={styles.commentName}>Hardik</Text>
-                    <Text style={styles.commentRole}>CEO</Text>
+                  >
+                    <Text
+                      style={{
+                        color: colors.gray,
+                        fontSize: 13,
+                        fontWeight: '500',
+                        textAlign: 'center',
+                      }}
+                    >
+                      Complete
+                    </Text>
                   </View>
                 </View>
-                <Text style={styles.commentTime}>28 days ago</Text>
-              </View>
-              <Text style={styles.commentBody}>ok</Text>
-            </View>
-          </View>
-        )}
-      </ScrollView>
 
-      {/* Bottom Comment Input */}
-      {selectedTab === 'Comments' && (
-        <View style={styles.commentInputContainer}>
-          <TextInput
-            placeholder="Write comment..."
-            placeholderTextColor="#A0A0A0"
-            style={styles.commentInput}
-          />
-          <TouchableOpacity style={styles.sendButton}>
-            <Icon name="send" size={24} color="#5E35B1" />
-          </TouchableOpacity>
+                <View style={styles.iconRow}>
+                  <TouchableOpacity
+                    onPress={() => navigation.navigate('UpdateTask')}
+                  >
+                    <Icon
+                      name="pencil"
+                      size={24}
+                      color={colors.primary}
+                      style={{ marginRight: 12 }}
+                    />
+                  </TouchableOpacity>
+
+                  <TouchableOpacity style={{ marginTop: 12 }}>
+                    <Icon name="delete" size={24} color={colors.primary} />
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </View>
+
+            {/* Tabs */}
+            <View style={styles.tabsWrapper}>
+              {['Comments', 'File', 'Team'].map(tab => (
+                <TouchableOpacity
+                  activeOpacity={0.7}
+                  key={tab}
+                  style={styles.tabItem}
+                  onPress={() => setSelectedTab(tab)}
+                >
+                  <Text
+                    style={[
+                      styles.tabText,
+                      selectedTab === tab && styles.tabActiveText,
+                    ]}
+                  >
+                    {tab}
+                  </Text>
+                  {selectedTab === tab && <View style={styles.tabUnderline} />}
+                </TouchableOpacity>
+              ))}
+            </View>
+
+            {/* Comments Section */}
+            {selectedTab === 'Comments' && (
+              <View style={styles.commentSection}>
+                <Text style={styles.commentTitle}>Comments (1)</Text>
+
+                <View style={styles.commentCard}>
+                  <View style={styles.commentHeader}>
+                    <View
+                      style={{ flexDirection: 'row', alignItems: 'center' }}
+                    >
+                      <Image
+                        source={{
+                          uri: 'https://i.pravatar.cc/150?img=3',
+                        }}
+                        style={styles.avatar}
+                      />
+                      <View>
+                        <Text style={styles.commentName}>Hardik</Text>
+                        <Text style={styles.commentRole}>CEO</Text>
+                      </View>
+                    </View>
+                    <Text style={styles.commentTime}>28 days ago</Text>
+                  </View>
+                  <Text style={styles.commentBody}>ok</Text>
+                </View>
+              </View>
+            )}
+
+            {selectedTab === 'Team' && (
+              <View style={styles.commentSection}>
+                <Text style={styles.commentTitle}>Team Member (1)</Text>
+
+                <View style={styles.commentCard}>
+                  <View style={styles.commentHeader}>
+                    <View
+                      style={{ flexDirection: 'row', alignItems: 'center' }}
+                    >
+                      <Image
+                        source={{
+                          uri: 'https://i.pravatar.cc/150?img=3',
+                        }}
+                        style={styles.avatar}
+                      />
+                      <View>
+                        <Text style={styles.commentName}>Avani</Text>
+                        <Text style={styles.commentRole}>
+                          Android Developer
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            )}
+
+            {selectedTab === 'File' && (
+              <View style={styles.commentSection}>
+                <Text style={styles.commentTitle}>Attachment (1 file)</Text>
+
+                <View style={styles.commentCard}>
+                  <View style={styles.commentHeader}>
+                    <View
+                      style={{ flexDirection: 'row', alignItems: 'center' }}
+                    >
+                      <Image
+                        source={{
+                          uri: 'https://i.pravatar.cc/150?img=3',
+                        }}
+                        style={styles.avatar}
+                      />
+                      <View>
+                        <Text style={styles.commentName}>image.jpg</Text>
+                        <Text style={styles.commentRole}>
+                          6 Nov 2025, 10:02 AM
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            )}
+          </ScrollView>
+ 
+          {/* Bottom Comment Input */}
+          {selectedTab === 'Comments' && (
+            <View style={styles.commentInputContainer}>
+              <TextInput
+                placeholder="Write comment..."
+                placeholderTextColor="#A0A0A0"
+                style={styles.commentInput}
+                multiline
+              />
+              <TouchableOpacity style={styles.sendButton}>
+                <Icon name="send" size={24} color="#5E35B1" />
+              </TouchableOpacity>
+            </View>
+          )}
         </View>
-      )}
-    </View>
+      </KeyboardAvoidingView>
+    </SafeAreaView>
   );
 };
 
 export default TaskDetails;
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: '#F6F6F8',
+  },
   container: {
     flex: 1,
     backgroundColor: '#F6F6F8',
@@ -192,18 +271,13 @@ const styles = StyleSheet.create({
   iconRow: {
     alignSelf: 'center',
   },
-  completeText: {
-    marginTop: 6,
-    color: '#9E9E9E',
-    fontSize: 14,
-    fontWeight: '500',
-  },
   tabsWrapper: {
     flexDirection: 'row',
     backgroundColor: '#F4EFFC',
     marginTop: 20,
     paddingVertical: 10,
-    justifyContent: 'space-around',
+    paddingHorizontal: 30,
+    justifyContent: 'space-between',
   },
   tabItem: {
     alignItems: 'center',
@@ -250,9 +324,8 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   avatar: {
-    width: 42,
-    height: 42,
-    borderRadius: 21,
+    width: 90,
+    height: 50,
     marginRight: 10,
   },
   commentName: {
@@ -274,22 +347,26 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   commentInputContainer: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
+    marginBottom: 0,
+    marginHorizontal: 20,
+    borderRadius: 12,
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#fff',
     borderTopWidth: 1,
     borderColor: '#E0E0E0',
     paddingHorizontal: 12,
-    paddingVertical: 6,
+    paddingVertical: 8,
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
   },
   commentInput: {
     flex: 1,
     fontSize: 15,
     paddingHorizontal: 10,
+    maxHeight: 100,
   },
   sendButton: {
     padding: 6,
