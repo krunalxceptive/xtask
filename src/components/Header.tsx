@@ -2,6 +2,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import { colors } from '../colors/colors';
+import { fonts } from '../font/fonts';
 
 const Header = ({ title }: any) => {
   return (
@@ -28,8 +29,8 @@ const styles = StyleSheet.create({
     // borderBottomRightRadius: 15,
   },
   headerTitle: {
-    color: '#fff',
-    fontSize: 24,
-    fontWeight: '700',
+    fontFamily: fonts.gilorySemibold,
+    color: '#fff', 
+    fontSize: 20,
   },
 });

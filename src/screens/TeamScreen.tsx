@@ -10,6 +10,7 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import Header from '../components/Header';
 import { colors } from '../colors/colors';
+import { fonts } from '../font/fonts';
 
 const teamData = [
   {
@@ -158,8 +159,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   name: {
+    fontFamily: fonts.gilorySemibold,
     fontSize: 17,
-    fontWeight: '700',
     color: '#000',
     marginBottom: 5,
   },
@@ -168,15 +169,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   role: {
+    fontFamily: fonts.giloryMedium,
     fontSize: 13,
     color: '#777',
     marginRight: 10,
   },
   tasks: {
+    fontFamily: fonts.giloryMedium,
     fontSize: 13,
     color: '#777',
   },
   company: {
+    fontFamily: fonts.giloryMedium,
     fontSize: 13,
     color: '#999',
     marginTop: 2,
@@ -192,7 +196,8 @@ const styles = StyleSheet.create({
     height: 6,
     borderRadius: 5,
   },
-  progressText: {
+  progressText: { 
+    fontFamily: fonts.giloryMedium,
     fontSize: 13,
     marginTop: 4,
     fontWeight: '600',

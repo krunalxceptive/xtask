@@ -15,6 +15,8 @@ import { colors } from '../colors/colors';
 import { useNavigation } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
+import CommonBtn from '../components/CommonBtn';
+import { fonts } from '../font/fonts';
 
 const AddMember = () => {
   const [selectedMembers, setSelectedMembers] = useState([]); // store multiple selections
@@ -111,25 +113,31 @@ const AddMember = () => {
         end={{ x: 1, y: 0 }} // Right side
         style={styles.headerContainer}
       >
-       
-       <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
-        <View style={styles.headerContent}>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}
+        >
+          <View style={styles.headerContent}>
+            <TouchableOpacity
+              activeOpacity={0.7}
+              onPress={() => navigation.goBack()}
+              style={styles.backButton}
+            >
+              <Ionicons name="arrow-back" size={24} color="#fff" />
+            </TouchableOpacity>
+            <Text style={styles.headerTitle}>Add Team Member</Text>
+          </View>
+
           <TouchableOpacity
             activeOpacity={0.7}
-            onPress={() => navigation.goBack()}
-            style={styles.backButton}
+            onPress={() => navigation.navigate('AddMannual')}
           >
-            <Ionicons name="arrow-back" size={24} color="#fff" />
+            <Entypo name="circle-with-plus" size={26} color="#fff" />
           </TouchableOpacity>
-          <Text style={styles.headerTitle}>Add Team Member</Text>
         </View>
-
-       <TouchableOpacity activeOpacity={0.7} onPress={() => navigation.navigate('AddMannual')}>
-        <Entypo name="circle-with-plus" size={26} color="#fff" /> 
-       </TouchableOpacity>
-
-       </View> 
-
       </LinearGradient>
 
       <View style={styles.searchContainer}>
@@ -156,20 +164,9 @@ const AddMember = () => {
         showsVerticalScrollIndicator={false}
       />
 
-      <LinearGradient
-        colors={[colors.primary, colors.secondary]}
-         start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-        style={styles.doneButton}
-      >
-        <TouchableOpacity
-          style={{ width: '100%' }}
-          activeOpacity={0.8}
-          onPress={handleDone}
-        >
-          <Text style={styles.doneText}>Done</Text>
-        </TouchableOpacity>
-      </LinearGradient>
+      <View style={{ marginBottom: 50, marginHorizontal: 20 }}>
+        <CommonBtn title={'Done'} onPress={() => console.log('Done Pressed')} />
+      </View> 
     </View>
   );
 };
@@ -225,11 +222,12 @@ const styles = StyleSheet.create({
     marginRight: 12,
   },
   name: {
+    fontFamily: fonts.gilorySemibold,
     fontSize: 16,
-    fontWeight: '600',
     color: '#000',
   },
   role: {
+    fontFamily: fonts.giloryMedium,
     fontSize: 14,
     color: '#999',
     marginTop: 2,
@@ -273,8 +271,8 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   headerTitle: {
+    fontFamily: fonts.gilorySemibold,
     color: '#fff',
     fontSize: 20,
-    fontWeight: '700',
   },
 });

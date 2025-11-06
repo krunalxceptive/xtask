@@ -13,6 +13,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import HeaderBack from '../components/HeaderBack';
 import { colors } from '../colors/colors';
 import { useNavigation } from '@react-navigation/native';
+import CommonBtn from '../components/CommonBtn';
+import { fonts } from '../font/fonts';
 
 const UpdateTask = () => {
   const [taskName, setTaskName] = useState('');
@@ -191,16 +193,8 @@ const UpdateTask = () => {
           ))}
         </View>
 
-        {/* Done Button */}
-        <TouchableOpacity activeOpacity={0.7} style={{ marginTop: 30 }}>
-          <LinearGradient
-            colors={[colors.primary, colors.secondary]}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 1 }}
-            style={styles.doneButton}>
-            <Text style={styles.doneText}>Update</Text>
-          </LinearGradient>
-        </TouchableOpacity>
+         <CommonBtn title={'Update'}  onPress={() => console.log('Update Pressed')}/>
+
       </ScrollView>
     </View>
   );
@@ -217,7 +211,7 @@ const styles = StyleSheet.create({
     color: '#888',
     fontSize: 14,
     marginTop: 15,
-    fontWeight: '600',
+    fontFamily: fonts.gilorySemibold
   },
   input: {
     borderBottomWidth: 1,
@@ -242,6 +236,7 @@ const styles = StyleSheet.create({
     borderStyle: 'dashed',
   },
   assignText: {
+    fontFamily: fonts.giloryMedium,
     marginLeft: 10,
     fontSize: 15,
     color: '#777',
@@ -263,6 +258,7 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
   },
   dateText: {
+    fontFamily: fonts.giloryMedium,
     fontSize: 15,
     color: '#000',
   },
@@ -283,6 +279,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#34a853',
   },
   statusText: {
+    fontFamily: fonts.giloryMedium,
     color: '#000',
     fontSize: 14,
   },

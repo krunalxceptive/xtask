@@ -12,6 +12,7 @@ import Icon from 'react-native-vector-icons/Feather'; // Main icon set
 import { colors } from '../colors/colors';
 import Header from '../components/Header';
 import { useNavigation } from '@react-navigation/native';
+import { fonts } from '../font/fonts';
 
 const ProfileScreen = () => {
  
@@ -42,8 +43,8 @@ const ProfileScreen = () => {
           </View> 
 
           <View style={{paddingLeft: 8}}>
-            <Text style={{fontWeight: '600', fontSize: 16}}>Hardik</Text>
-             <Text style={{fontWeight: '500', fontSize: 14, color: colors.gray}}>CEO</Text>
+            <Text style={{fontFamily: fonts.gilorySemibold, fontSize: 16}}>Hardik</Text>
+             <Text style={{fontFamily: fonts.giloryMedium, fontSize: 14, color: colors.gray}}>CEO</Text>
           </View>
         </View>
 
@@ -135,6 +136,6 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: '#000',
     marginLeft: 10,
-    fontWeight: '500',
+    fontFamily: fonts.gilorySemibold,
   },
 });

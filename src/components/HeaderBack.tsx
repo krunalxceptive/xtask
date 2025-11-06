@@ -4,6 +4,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import { colors } from '../colors/colors';
+import { fonts } from '../font/fonts';
 
 const HeaderBack = ({ title }: any) => {
   const navigation = useNavigation();
@@ -26,7 +27,7 @@ const HeaderBack = ({ title }: any) => {
         <Text style={styles.headerTitle}>{title}</Text>
       </View>
     </LinearGradient>
-  );
+  ); 
 };
 
 export default HeaderBack;
@@ -46,8 +47,9 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   headerTitle: {
-    color: '#fff',
+    fontFamily: fonts.gilorySemibold,
+    color: '#fff', 
     fontSize: 20,
-    fontWeight: '700',
+
   },
 });

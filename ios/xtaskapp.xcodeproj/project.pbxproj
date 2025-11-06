@@ -12,6 +12,10 @@
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		BDF09C2B36443D81D88F62D2 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
+		2A5F2330580242AFB252F6AF /* gilroy_bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6870EDED19AD4115B6D7AF32 /* gilroy_bold.ttf */; };
+		92D71EFDB90149E395BE4283 /* gilroy_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5588294FE8740DAA92A2C04 /* gilroy_medium.ttf */; };
+		9936F01E9E1440CDB034FBA4 /* gilroy_regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CF2BD1F03F04CEC8EE04A2A /* gilroy_regular.ttf */; };
+		7041195B0F5F4C0DA7F85B29 /* gilroy_semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 94A581B2FAA54D57971283BA /* gilroy_semibold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +29,10 @@
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = xtaskapp/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = xtaskapp/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		6870EDED19AD4115B6D7AF32 /* gilroy_bold.ttf */ = {isa = PBXFileReference; name = "gilroy_bold.ttf"; path = "../assets/fonts/gilroy_bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A5588294FE8740DAA92A2C04 /* gilroy_medium.ttf */ = {isa = PBXFileReference; name = "gilroy_medium.ttf"; path = "../assets/fonts/gilroy_medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1CF2BD1F03F04CEC8EE04A2A /* gilroy_regular.ttf */ = {isa = PBXFileReference; name = "gilroy_regular.ttf"; path = "../assets/fonts/gilroy_regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		94A581B2FAA54D57971283BA /* gilroy_semibold.ttf */ = {isa = PBXFileReference; name = "gilroy_semibold.ttf"; path = "../assets/fonts/gilroy_semibold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +83,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				33ABBF4D147F469F928A8E6B /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -97,6 +106,18 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		33ABBF4D147F469F928A8E6B /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				6870EDED19AD4115B6D7AF32 /* gilroy_bold.ttf */,
+				A5588294FE8740DAA92A2C04 /* gilroy_medium.ttf */,
+				1CF2BD1F03F04CEC8EE04A2A /* gilroy_regular.ttf */,
+				94A581B2FAA54D57971283BA /* gilroy_semibold.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -161,6 +182,10 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				BDF09C2B36443D81D88F62D2 /* PrivacyInfo.xcprivacy in Resources */,
+				2A5F2330580242AFB252F6AF /* gilroy_bold.ttf in Resources */,
+				92D71EFDB90149E395BE4283 /* gilroy_medium.ttf in Resources */,
+				9936F01E9E1440CDB034FBA4 /* gilroy_regular.ttf in Resources */,
+				7041195B0F5F4C0DA7F85B29 /* gilroy_semibold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

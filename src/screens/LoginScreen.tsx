@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import {
   View,
@@ -9,14 +8,16 @@ import {
   StatusBar,
   KeyboardAvoidingView,
   Platform,
-  ScrollView,
+  ScrollView, 
   Image,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { colors } from '../colors/colors';
 import { useNavigation } from '@react-navigation/native';
+import CommonBtn from '../components/CommonBtn';
+import { fonts } from '../font/fonts';
 
-const LoginScreen = () => {
+const LoginScreen = () => { 
   const [mobileNumber, setMobileNumber] = useState('');
   const [password, setPassword] = useState('');
   const navigation = useNavigation();
@@ -35,7 +36,9 @@ const LoginScreen = () => {
 
       {/* Background Gradient Header */}
       <LinearGradient
-        colors={[colors.primary, colors.secondary]}
+        colors={[colors.secondary, colors.primary]}
+        start={{ x: 1, y: 1 }} // Left side
+        end={{ x: 0, y: 0 }} // Right side
         style={styles.headerBackground}
       >
         <View style={styles.headerContent}>
@@ -58,7 +61,7 @@ const LoginScreen = () => {
           keyboardShouldPersistTaps="handled"
         >
           <View style={styles.formContainer}>
-            {/* Avatar */}
+            {/* Avatar */} 
             <View style={styles.avatarContainer}>
               <Image
                 source={require('../assets/images/splash.png')}
@@ -90,23 +93,9 @@ const LoginScreen = () => {
               />
             </View>
 
-            {/* Login Button */}
-            <TouchableOpacity
-              style={styles.loginButton}
-              onPress={handleLogin}
-              activeOpacity={0.8}
-            >
-              <LinearGradient
-                colors={[colors.primary, colors.secondary]}
-                style={styles.buttonGradient}
-                start={{ x: 0, y: 0 }}
-                end={{ x: 1, y: 0 }}
-              >
-                <Text style={styles.loginButtonText}>Login</Text>
-              </LinearGradient>
-            </TouchableOpacity>
-
-            {/* Register Button */}
+            <CommonBtn title={'Login'}  onPress={handleLogin}/>
+  
+            {/* Register Button */} 
             <TouchableOpacity
               style={styles.registerButton}
               onPress={handleRegister}
@@ -141,13 +130,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
+    fontFamily: fonts.gilorySemibold,
     fontSize: 24,
-    fontWeight: '700',
-    color: '#FFFFFF',
-    marginBottom: 10,
+    color: '#FFFFFF',  
+    marginBottom: 10, 
   },
   subtitle: {
-    fontSize: 15,
+    fontFamily: fonts.giloryMedium,
+    fontSize: 16,
     color: '#FFFFFF',
     textAlign: 'center',
     opacity: 0.9,
@@ -218,6 +208,7 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   registerButtonText: {
+    fontFamily: fonts.gilorySemibold,
     color: '#FFFFFF',
     fontSize: 18,
     fontWeight: '600',

@@ -16,6 +16,8 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import { colors } from '../colors/colors';
 import { useNavigation } from '@react-navigation/native';
+import CommonBtn from '../components/CommonBtn';
+import { fonts } from '../font/fonts';
 
 const RegisterScreen = () => {
   const [mobileNumber, setMobileNumber] = useState('');
@@ -28,7 +30,7 @@ const RegisterScreen = () => {
   const handleRegister = () => {
     console.log('Register pressed', {
       mobileNumber,
-      email,
+      email, 
       password,
       numberOfEmployees,
       purposeOfUse,
@@ -43,6 +45,7 @@ const RegisterScreen = () => {
       <StatusBar barStyle="light-content" />
 
     <TouchableOpacity 
+          activeOpacity={0.7}
           style={styles.backButton}
           onPress={() => navigation.goBack()}
         >
@@ -142,21 +145,8 @@ const RegisterScreen = () => {
             />
           </View>
 
-          {/* Register Button */}
-          <TouchableOpacity
-            style={styles.registerButton}
-            onPress={handleRegister}
-            activeOpacity={0.8}
-          >
-            <LinearGradient
-              colors={[colors.primary, colors.secondary]}
-              style={styles.buttonGradient}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 0 }}
-            >
-              <Text style={styles.registerButtonText}>Register</Text>
-            </LinearGradient>
-          </TouchableOpacity>
+            <CommonBtn title={'Register'}  onPress={handleRegister}/>
+
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
@@ -182,20 +172,21 @@ const styles = StyleSheet.create({
   },
   backButton: {
     position: 'absolute',
-    top: 45,
+    top: 50,
     left: 15,
     zIndex: 10,
   },
   header: {
     alignItems: 'center',
   },
-  title: {
+  title: {  
     fontSize: 22,
-    fontWeight: '700',
+    fontFamily: fonts.gilorySemibold,
     color: '#FFFFFF',
     marginBottom: 8,
   },
   subtitle: {
+    fontFamily: fonts.giloryMedium,
     fontSize: 15,
     color: '#FFFFFF',
     textAlign: 'center',

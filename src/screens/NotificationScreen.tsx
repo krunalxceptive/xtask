@@ -8,6 +8,7 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import Header from '../components/Header';
 import { colors } from '../colors/colors';
+import { fonts } from '../font/fonts';
 
 const notifications = [
   {
@@ -99,12 +100,14 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
   },
   title: {
+
     fontSize: 15,
-    fontWeight: '600',
+    fontFamily: fonts.gilorySemibold,
     color: '#000',
     marginBottom: 5,
   },
   date: {
+    fontFamily: fonts.giloryMedium,
     fontSize: 13,
     color: '#777',
   },

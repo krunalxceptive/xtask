@@ -7,6 +7,7 @@ import TeamScreen from '../screens/TeamScreen';
 import NotificationScreen from '../screens/NotificationScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import { colors } from '../colors/colors';
+import { fonts } from '../font/fonts';
  
 const Tab = createBottomTabNavigator();
 
@@ -52,7 +53,7 @@ export default function MyTabs() {
                   color: focused ? colors.primary : '#999',
                   fontSize: 10,
                   marginTop: 4,
-                  fontWeight: focused ? '600' : '400',
+                  fontFamily: focused ? fonts.gilorySemibold : fonts.giloryMedium,
                 }}
               >
                 Task

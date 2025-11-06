@@ -13,6 +13,7 @@ import Header from '../components/Header';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { colors } from '../colors/colors';
 import { useNavigation } from '@react-navigation/native';
+import { fonts } from '../font/fonts';
 
 const TaskScreen = () => {
   const [activeTab, setActiveTab] = useState('Pending');
@@ -64,14 +65,14 @@ const TaskScreen = () => {
         <View
           style={{
             height: '100%',
-            width: 10,
+            width: 8,
             backgroundColor: colors.gray,
             borderTopLeftRadius: 12,
             borderBottomLeftRadius: 12,
           }}
         ></View>
 
-        <View style={{ flex: 1, padding: 16 }}>
+        <View style={{ flex: 1, padding: 20 }}>
           <Text style={styles.taskTitle}>{item.title}</Text>
           <View style={styles.dateRow}>
             <Ionicons name="calendar-outline" size={16} color="#666" />
@@ -181,9 +182,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#6C4ED9',
   },
   tabText: {
-    color: '#000',
-    fontSize: 16,
-    fontWeight: '500',
+    fontFamily: fonts.giloryMedium,
+    color: '#000', 
+    fontSize: 15,
   },
   activeTabText: {
     color: '#fff',
@@ -223,7 +224,7 @@ const styles = StyleSheet.create({
   },
   taskTitle: {
     fontSize: 16,
-    fontWeight: '600',
+    fontFamily: fonts.gilorySemibold,
     color: '#111',
   },
   dateRow: {
@@ -232,10 +233,10 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   taskDate: {
+    fontFamily: fonts.giloryMedium,
     color: '#666',
     marginLeft: 6,
     fontSize: 13,
-    fontWeight: '500',
   },
   avatar: {
     width: 38,

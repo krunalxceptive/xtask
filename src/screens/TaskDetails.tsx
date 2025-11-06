@@ -9,16 +9,49 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   Platform,
+  Modal,
+  Pressable,
 } from 'react-native';
 import HeaderBack from '../components/HeaderBack';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import Entypo from 'react-native-vector-icons/Entypo';
 import { colors } from '../colors/colors';
 import { useNavigation } from '@react-navigation/native';
+import { launchImageLibrary, launchCamera } from 'react-native-image-picker';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { fonts } from '../font/fonts';
 
 const TaskDetails = () => {
   const [selectedTab, setSelectedTab] = useState('Comments');
   const navigation = useNavigation();
+    const [modalVisible, setModalVisible] = useState(false);
+      const [profileImage, setProfileImage] = useState(
+        require('../assets/images/doc.png'),
+      );  
+
+     // open camera
+      const handleCamera = () => {
+        setModalVisible(false);
+        launchCamera({ mediaType: 'photo', saveToPhotos: true }, response => {
+          if (response.didCancel || response.errorCode) return;
+          if (response.assets && response.assets[0]?.uri) {
+            setProfileImage({ uri: response.assets[0].uri });
+          }
+        });
+      };
+    
+      // open gallery
+      const handleGallery = () => {
+        setModalVisible(false);
+        launchImageLibrary({ mediaType: 'photo' }, response => {
+          if (response.didCancel || response.errorCode) return;
+          if (response.assets && response.assets[0]?.uri) {
+            setProfileImage({ uri: response.assets[0].uri });
+          }
+        });
+      };
+
 
   return (
     <SafeAreaView style={{ flex: 1 }} edges={['bottom']}>
@@ -61,7 +94,7 @@ const TaskDetails = () => {
                       style={{
                         color: colors.gray,
                         fontSize: 13,
-                        fontWeight: '500',
+                        fontFamily: fonts.giloryMedium,
                         textAlign: 'center',
                       }}
                     >
@@ -74,12 +107,7 @@ const TaskDetails = () => {
                   <TouchableOpacity
                     onPress={() => navigation.navigate('UpdateTask')}
                   >
-                    <Icon
-                      name="pencil"
-                      size={24}
-                      color={colors.primary}
-                      style={{ marginRight: 12 }}
-                    />
+                    <Icon name="pencil" size={24} color={colors.primary} />
                   </TouchableOpacity>
 
                   <TouchableOpacity style={{ marginTop: 12 }}>
@@ -168,7 +196,35 @@ const TaskDetails = () => {
 
             {selectedTab === 'File' && (
               <View style={styles.commentSection}>
-                <Text style={styles.commentTitle}>Attachment (1 file)</Text>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                  }}
+                >
+                  <Text style={styles.commentTitle}>Attachment (1 file)</Text>
+
+                  <TouchableOpacity onPress={() => setModalVisible(true)} activeOpacity={0.7}>
+                    <View style={{ flexDirection: 'row' }}>
+                      <Entypo
+                        name="circle-with-plus" 
+                        size={18}
+                        color={colors.primary}
+                      />
+                      <Text
+                        style={{
+                          fontSize: 14,
+                          paddingLeft: 5,
+                          fontFamily: fonts.gilorySemibold,
+                          color: colors.primary,
+                          marginBottom: 10,
+                        }}
+                      >
+                        Attach new
+                      </Text>
+                    </View>
+                  </TouchableOpacity>
+                </View>
 
                 <View style={styles.commentCard}>
                   <View style={styles.commentHeader}>
@@ -176,11 +232,14 @@ const TaskDetails = () => {
                       style={{ flexDirection: 'row', alignItems: 'center' }}
                     >
                       <Image
-                        source={{
-                          uri: 'https://i.pravatar.cc/150?img=3',
+                        source={profileImage}
+                        style={{ 
+                          width: 90,
+                          height: 50,
+                          marginRight: 10,
+               
                         }}
-                        style={styles.avatar}
-                      />
+                      /> 
                       <View>
                         <Text style={styles.commentName}>image.jpg</Text>
                         <Text style={styles.commentRole}>
@@ -193,7 +252,7 @@ const TaskDetails = () => {
               </View>
             )}
           </ScrollView>
- 
+
           {/* Bottom Comment Input */}
           {selectedTab === 'Comments' && (
             <View style={styles.commentInputContainer}>
@@ -209,6 +268,38 @@ const TaskDetails = () => {
             </View>
           )}
         </View>
+         
+       {/* Bottom Modal */}
+            <Modal
+              animationType="slide"
+              transparent={true}
+              visible={modalVisible}
+              onRequestClose={() => setModalVisible(false)}
+            >
+              <Pressable
+                style={styles.modalBackground}
+                onPress={() => setModalVisible(false)}
+              >
+                <View style={styles.modalContainer}>
+                  <Text style={styles.modalTitle}>Change profile Photo</Text>
+      
+                  <TouchableOpacity style={styles.modalOption} onPress={handleCamera}>
+                    <Ionicons name="camera-outline" size={22} color="#000" />
+                    <Text style={styles.modalOptionText}>Camera</Text>
+                  </TouchableOpacity> 
+      
+                  <TouchableOpacity
+                    style={styles.modalOption}
+                    onPress={handleGallery}
+                  >
+                    <Ionicons name="image-outline" size={22} color="#000" />
+                    <Text style={styles.modalOptionText}>Gallery</Text>
+                  </TouchableOpacity>
+                </View>
+              </Pressable>
+            </Modal>   
+
+
       </KeyboardAvoidingView>
     </SafeAreaView>
   );
@@ -230,7 +321,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     marginTop: 16,
     borderRadius: 16,
-    padding: 16,
+    padding: 20,
     elevation: 3,
     shadowColor: '#000',
     shadowOpacity: 0.08,
@@ -242,16 +333,19 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
   },
   taskTitle: {
+    fontFamily: fonts.gilorySemibold,
     fontSize: 16,
     color: '#000',
     fontWeight: '600',
   },
   taskDate: {
+    fontFamily: fonts.giloryMedium,
     fontSize: 13,
     color: '#9E9E9E',
     marginTop: 4,
   },
   taskSubText: {
+    fontFamily: fonts.giloryMedium,
     fontSize: 13,
     color: '#9E9E9E',
     marginTop: 2,
@@ -265,7 +359,7 @@ const styles = StyleSheet.create({
   statusText: {
     color: '#fff',
     fontSize: 13,
-    fontWeight: '500',
+    fontFamily: fonts.giloryMedium,
     textAlign: 'center',
   },
   iconRow: {
@@ -275,19 +369,22 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: '#F4EFFC',
     marginTop: 20,
-    paddingVertical: 10,
+    paddingVertical: 14,
     paddingHorizontal: 30,
     justifyContent: 'space-between',
   },
   tabItem: {
-    alignItems: 'center',
+    alignItems: 'center', 
+    minWidth: 80
   },
   tabText: {
+    fontFamily: fonts.gilorySemibold,
     fontSize: 15,
     color: '#A1A1AA',
     fontWeight: '500',
   },
   tabActiveText: {
+    fontFamily: fonts.gilorySemibold,
     color: '#5E35B1',
     fontWeight: '600',
   },
@@ -296,7 +393,7 @@ const styles = StyleSheet.create({
     height: 3,
     backgroundColor: '#5E35B1',
     borderRadius: 2,
-    marginTop: 6,
+    marginTop: 8,
   },
   commentSection: {
     marginHorizontal: 16,
@@ -304,7 +401,7 @@ const styles = StyleSheet.create({
   },
   commentTitle: {
     fontSize: 15,
-    fontWeight: '600',
+    fontFamily: fonts.gilorySemibold,
     color: '#000',
     marginBottom: 10,
   },
@@ -324,24 +421,29 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   avatar: {
-    width: 90,
-    height: 50,
+    width: 45,
+    height: 45,
     marginRight: 10,
+    borderRadius: 30,
   },
   commentName: {
+    fontFamily: fonts.gilorySemibold,
     fontSize: 15,
     color: '#000',
     fontWeight: '600',
   },
   commentRole: {
+    fontFamily: fonts.giloryMedium,
     color: '#9E9E9E',
     fontSize: 13,
   },
   commentTime: {
+    fontFamily: fonts.giloryMedium,
     color: '#9E9E9E',
     fontSize: 13,
   },
   commentBody: {
+    fontFamily: fonts.giloryMedium,
     fontSize: 14,
     color: '#000',
     marginTop: 10,
@@ -370,5 +472,45 @@ const styles = StyleSheet.create({
   },
   sendButton: {
     padding: 6,
+  },
+
+   modalBackground: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    backgroundColor: 'rgba(0,0,0,0.4)',
+  },
+  modalContainer: {
+    backgroundColor: '#fefefe',
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    paddingHorizontal: 25,
+    paddingTop: 20,
+    paddingBottom: 30,
+  },
+  modalTitle: {
+    fontSize: 16,
+    fontWeight: '700',
+    color: '#000',
+    marginBottom: 20,
+  },
+  modalOption: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 12,
+    gap: 10,
+  },
+  modalOptionText: {
+    fontSize: 15,
+    color: '#000',
+    fontWeight: '500',
+  },
+  modalCancel: {
+    marginTop: 15,
+    alignItems: 'center',
+  },
+  modalCancelText: {
+    color: '#9c27b0',
+    fontSize: 16,
+    fontWeight: '600',
   },
 });

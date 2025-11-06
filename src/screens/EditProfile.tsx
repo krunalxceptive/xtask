@@ -14,7 +14,10 @@ import LinearGradient from 'react-native-linear-gradient';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import HeaderBack from '../components/HeaderBack';
 import { launchImageLibrary, launchCamera } from 'react-native-image-picker';
-
+import CommonBtn from '../components/CommonBtn';
+import { colors } from '../colors/colors';
+import { fonts } from '../font/fonts';
+ 
 const EditProfile = () => {
   const [name, setName] = useState('Hardik');
   const [mobile] = useState('8000049953');
@@ -47,7 +50,7 @@ const EditProfile = () => {
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: '#fff' }}>
+    <View style={{ flex: 1, backgroundColor: colors.background }}>
       <HeaderBack title="Edit Profile" />
 
       <ScrollView
@@ -93,15 +96,11 @@ const EditProfile = () => {
         </View>
 
         {/* Submit Button */}
-        <TouchableOpacity style={styles.submitButton}>
-          <LinearGradient
-            colors={['#9c27b0', '#673ab7']}
-            style={styles.gradientButton}
-          >
-            <Text style={styles.submitText}>Submit</Text>
-          </LinearGradient>
-        </TouchableOpacity>
       </ScrollView>
+
+      <View style={{ marginBottom: 50, marginHorizontal: 20 }}>
+        <CommonBtn title={'Submit'} onPress={() => console.log('Submit')} />
+      </View>
 
       {/* Bottom Modal */}
       <Modal
@@ -129,9 +128,10 @@ const EditProfile = () => {
               <Ionicons name="image-outline" size={22} color="#000" />
               <Text style={styles.modalOptionText}>Gallery</Text>
             </TouchableOpacity>
-          </View> 
+          </View>
         </Pressable>
       </Modal>
+
     </View>
   );
 };
@@ -165,17 +165,17 @@ const styles = StyleSheet.create({
     width: '90%',
   },
   label: {
+    fontFamily: fonts.gilorySemibold,
     fontSize: 14,
     color: '#000',
     marginBottom: 6,
-    fontWeight: '600',
   },
   input: {
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 10,
     paddingHorizontal: 12,
-    paddingVertical: 10,
+    paddingVertical: 15,
     marginBottom: 20,
     color: '#000',
     fontWeight: '500',
@@ -184,7 +184,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#e6e6e6',
     borderRadius: 10,
     paddingHorizontal: 12,
-    paddingVertical: 12,
+    paddingVertical: 15,
     marginBottom: 20,
   },
   disabledText: {
