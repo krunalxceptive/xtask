@@ -9,6 +9,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import Header from '../components/Header';
 import { colors } from '../colors/colors';
 import { fonts } from '../font/fonts';
+import { scale } from 'react-native-size-matters';
 
 const notifications = [
   {
@@ -89,10 +90,10 @@ const styles = StyleSheet.create({
   },
   card: {
     backgroundColor: '#fff',
-    marginHorizontal: 15,
-    marginVertical: 8,
+    marginHorizontal: scale(15), 
+    marginVertical: scale(6),
     borderRadius: 15,
-    padding: 15,
+    padding: scale(18),
     elevation: 4,
     shadowColor: '#000',
     shadowOpacity: 0.08,
@@ -100,15 +101,14 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
   },
   title: {
-
-    fontSize: 15,
+    fontSize: scale(15),
     fontFamily: fonts.gilorySemibold,
     color: '#000',
     marginBottom: 5,
   },
   date: {
     fontFamily: fonts.giloryMedium,
-    fontSize: 13,
+    fontSize: scale(13),
     color: '#777',
   },
 });

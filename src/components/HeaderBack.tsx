@@ -5,6 +5,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import { colors } from '../colors/colors';
 import { fonts } from '../font/fonts';
+import { scale } from 'react-native-size-matters';
 
 const HeaderBack = ({ title }: any) => {
   const navigation = useNavigation();
@@ -22,7 +23,7 @@ const HeaderBack = ({ title }: any) => {
           onPress={() => navigation.goBack()}
           style={styles.backButton}
         >
-          <Ionicons name="arrow-back" size={24} color="#fff" />
+          <Ionicons name="arrow-back" size={scale(23)} color="#fff" />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{title}</Text>
       </View>
@@ -34,22 +35,21 @@ export default HeaderBack;
 
 const styles = StyleSheet.create({
   headerContainer: {
-    height: 110,
+    height: scale(110),
     justifyContent: 'flex-end',
-    paddingHorizontal: 20,
-    paddingBottom: 20,
+    paddingHorizontal: scale(20),
+    paddingBottom: scale(20),
   },
   headerContent: {
     flexDirection: 'row',
     alignItems: 'center',
   },
   backButton: {
-    marginRight: 10,
+    marginRight: scale(10),
   },
   headerTitle: {
     fontFamily: fonts.gilorySemibold,
     color: '#fff', 
-    fontSize: 20,
-
+    fontSize: scale(19),
   },
 });

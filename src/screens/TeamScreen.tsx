@@ -11,6 +11,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import Header from '../components/Header';
 import { colors } from '../colors/colors';
 import { fonts } from '../font/fonts';
+import { scale } from 'react-native-size-matters';
 
 const teamData = [
   {
@@ -73,13 +74,29 @@ const TeamScreen = () => {
 
         <Text style={styles.company}>🏢 {item.company}</Text>
 
-        <View style={styles.progressContainer}>
-          <View
+        <View style={{ flexDirection: 'row' }}>
+          <View style={styles.progressContainer}>
+            <View
+              style={[
+                styles.progressBar,
+                {
+                  width: `${item.progress}%`,
+                  backgroundColor:
+                    item.progress < 50
+                      ? '#f44336'
+                      : item.progress === 100
+                      ? '#4caf50'
+                      : '#8bc34a',
+                },
+              ]}
+            />
+          </View>
+
+          <Text
             style={[
-              styles.progressBar,
+              styles.progressText,
               {
-                width: `${item.progress}%`,
-                backgroundColor:
+                color:
                   item.progress < 50
                     ? '#f44336'
                     : item.progress === 100
@@ -87,24 +104,11 @@ const TeamScreen = () => {
                     : '#8bc34a',
               },
             ]}
-          />
-        </View>
+          >
+            {item.progress}%
+          </Text>
 
-        <Text
-          style={[
-            styles.progressText,
-            {
-              color:
-                item.progress < 50
-                  ? '#f44336'
-                  : item.progress === 100
-                  ? '#4caf50'
-                  : '#8bc34a',
-            },
-          ]}
-        >
-          {item.progress}%
-        </Text>
+        </View>
       </View>
 
       <Image source={item.image} style={styles.avatar} />
@@ -114,21 +118,16 @@ const TeamScreen = () => {
   return (
     <View style={styles.container}>
       {/* Gradient Header */}
-       <Header title={'Team List'}/>   
+      <Header title={'Team List'} />
 
       {/* FlatList for team members */}
       <FlatList
         data={teamData}
         renderItem={renderItem}
-        keyExtractor={(item) => item.id}
+        keyExtractor={item => item.id}
         contentContainerStyle={{ paddingVertical: 15, paddingBottom: 120 }}
         showsVerticalScrollIndicator={false}
       />
-
-      {/* Floating Add Button */}
-      <TouchableOpacity style={styles.fab}>
-        <Text style={styles.fabIcon}>＋</Text>
-      </TouchableOpacity>
     </View>
   );
 };
@@ -142,10 +141,10 @@ const styles = StyleSheet.create({
   },
   card: {
     backgroundColor: '#fff',
-    marginHorizontal: 15,
-    marginVertical: 8,
+    marginHorizontal: scale(15),
+    marginVertical: scale(8),
     borderRadius: 15,
-    padding: 15,
+    padding: scale(15),
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -160,7 +159,7 @@ const styles = StyleSheet.create({
   },
   name: {
     fontFamily: fonts.gilorySemibold,
-    fontSize: 17,
+    fontSize: scale(16),
     color: '#000',
     marginBottom: 5,
   },
@@ -170,47 +169,49 @@ const styles = StyleSheet.create({
   },
   role: {
     fontFamily: fonts.giloryMedium,
-    fontSize: 13,
+    fontSize: scale(12),
     color: '#777',
     marginRight: 10,
   },
   tasks: {
     fontFamily: fonts.giloryMedium,
-    fontSize: 13,
+    fontSize: scale(12),
     color: '#777',
   },
   company: {
     fontFamily: fonts.giloryMedium,
-    fontSize: 13,
+    fontSize: scale(12),
     color: '#999',
     marginTop: 2,
   },
   progressContainer: {
-    height: 6,
+    height: scale(5),
     backgroundColor: '#ddd',
     borderRadius: 5,
-    marginTop: 8,
+    marginTop: scale(8),
     width: '100%',
   },
   progressBar: {
-    height: 6,
+    height: scale(4),
     borderRadius: 5,
   },
-  progressText: { 
+  progressText: {
     fontFamily: fonts.giloryMedium,
-    fontSize: 13,
+    fontSize: scale(12),
+    paddingLeft: scale(6),
     marginTop: 4,
     fontWeight: '600',
   },
   avatar: {
-    width: 45,
-    height: 45,
+    width: scale(45),
+    height: scale(45),
     borderRadius: 25,
+    marginBottom: scale(25),
     marginLeft: 10,
   },
   fab: {
     position: 'absolute',
-    bottom: 25,
+    bottom: 250,
     right: 25,
     width: 60,
     height: 60,

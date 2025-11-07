@@ -6,15 +6,16 @@ import {
   FlatList,
   Image,
   StyleSheet,
-  ScrollView,
+  ScrollView, 
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Header from '../components/Header';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { colors } from '../colors/colors';
 import { useNavigation } from '@react-navigation/native';
-import { fonts } from '../font/fonts';
-
+import { fonts } from '../font/fonts'; 
+import { scale } from 'react-native-size-matters';
+ 
 const TaskScreen = () => {
   const [activeTab, setActiveTab] = useState('Pending');
   const navigation = useNavigation();
@@ -62,17 +63,18 @@ const TaskScreen = () => {
   const renderTask = ({ item }) => (
     <TouchableOpacity activeOpacity={0.7} onPress={() => navigation.navigate('TaskDetails')}>
       <View style={styles.taskCard}>
+      
         <View
           style={{
             height: '100%',
-            width: 8,
+            width: scale(8),
             backgroundColor: colors.gray,
             borderTopLeftRadius: 12,
             borderBottomLeftRadius: 12,
           }}
         ></View>
 
-        <View style={{ flex: 1, padding: 20 }}>
+        <View style={{ flex: 1, padding: scale(20) }}>
           <Text style={styles.taskTitle}>{item.title}</Text>
           <View style={styles.dateRow}>
             <Ionicons name="calendar-outline" size={16} color="#666" />
@@ -112,7 +114,7 @@ const TaskScreen = () => {
                 activeTab === tab && styles.activeTabButton,
               ]}
               onPress={() => setActiveTab(tab)}
-            >
+            > 
               <Text
                 style={[
                   styles.tabText,
@@ -164,18 +166,18 @@ const styles = StyleSheet.create({
   },
   tabsContainer: {
     flexDirection: 'row',
-    paddingHorizontal: 10,
-    marginTop: 10,
-    paddingBottom: 5,
+    paddingHorizontal: scale(10),
+    marginTop: scale(10),
+    paddingBottom: scale(5),
   },
   tabButton: {
     flexDirection: 'row',
     backgroundColor: '#EDE9FE',
     borderRadius: 30,
     alignItems: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 20,
-    marginRight: 10,
+    paddingVertical: scale(11),
+    paddingHorizontal: scale(19),
+    marginRight: scale(10),
   },
 
   activeTabButton: {
@@ -184,7 +186,7 @@ const styles = StyleSheet.create({
   tabText: {
     fontFamily: fonts.giloryMedium,
     color: '#000', 
-    fontSize: 15,
+    fontSize: scale(14),
   },
   activeTabText: {
     color: '#fff',
@@ -192,16 +194,16 @@ const styles = StyleSheet.create({
   countBadge: {
     backgroundColor: '#DAD2FF',
     borderRadius: 10,
-    marginLeft: 8,
-    paddingHorizontal: 6,
-    paddingVertical: 2,
+    marginLeft: scale(8),
+    paddingHorizontal: scale(6),
+    paddingVertical: scale(2),
   },
   activeBadge: {
     backgroundColor: '#fff',
   },
   countText: {
     color: '#ff3f3fff',
-    fontSize: 12,
+    fontSize: scale(12),
     fontWeight: '600',
   },
   activeCountText: {
@@ -223,36 +225,36 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
   },
   taskTitle: {
-    fontSize: 16,
+    fontSize: scale(15),
     fontFamily: fonts.gilorySemibold,
     color: '#111',
   },
   dateRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 10,
+    marginTop: scale(10),
   },
   taskDate: {
     fontFamily: fonts.giloryMedium,
     color: '#666',
     marginLeft: 6,
-    fontSize: 13,
+    fontSize: scale(12),
   },
   avatar: {
-    width: 38,
-    height: 38,
+    width: scale(38),
+    height: scale(38),
     borderRadius: 19,
-    marginRight: 16,
+    marginRight: scale(15),
   },
   fab: {
     position: 'absolute',
-    bottom: 125,
-    right: 20,
+    bottom: scale(125),
+    right: scale(20),
     zIndex: 999,
     backgroundColor: colors.primary,
     borderRadius: 30,
-    width: 56,
-    height: 56,
+    width: scale(55),
+    height: scale(55),
     elevation: 6,
     justifyContent: 'center',
     alignItems: 'center',

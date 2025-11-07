@@ -17,6 +17,7 @@ import { launchImageLibrary, launchCamera } from 'react-native-image-picker';
 import CommonBtn from '../components/CommonBtn';
 import { colors } from '../colors/colors';
 import { fonts } from '../font/fonts';
+import { scale } from 'react-native-size-matters';
  
 const EditProfile = () => {
   const [name, setName] = useState('Hardik');
@@ -93,15 +94,14 @@ const EditProfile = () => {
             placeholderTextColor="#888"
             keyboardType="email-address"
           />
-        </View>
-
+        </View> 
         {/* Submit Button */}
       </ScrollView>
 
-      <View style={{ marginBottom: 50, marginHorizontal: 20 }}>
+      <View style={{ marginBottom: scale(50), marginHorizontal: scale(20) }}>
         <CommonBtn title={'Submit'} onPress={() => console.log('Submit')} />
       </View>
-
+ 
       {/* Bottom Modal */}
       <Modal
         animationType="slide"
@@ -117,7 +117,7 @@ const EditProfile = () => {
             <Text style={styles.modalTitle}>Change profile Photo</Text>
 
             <TouchableOpacity style={styles.modalOption} onPress={handleCamera}>
-              <Ionicons name="camera-outline" size={22} color="#000" />
+              <Ionicons name="camera-outline" size={scale(22)} color="#000" />
               <Text style={styles.modalOptionText}>Camera</Text>
             </TouchableOpacity>
 
@@ -125,7 +125,7 @@ const EditProfile = () => {
               style={styles.modalOption}
               onPress={handleGallery}
             >
-              <Ionicons name="image-outline" size={22} color="#000" />
+              <Ionicons name="image-outline" size={scale(22)} color="#000" />
               <Text style={styles.modalOptionText}>Gallery</Text>
             </TouchableOpacity>
           </View>
@@ -141,21 +141,21 @@ export default EditProfile;
 const styles = StyleSheet.create({
   scrollContainer: {
     alignItems: 'center',
-    paddingVertical: 30,
-  },
+    paddingVertical: scale(30),
+  }, 
   profileContainer: {
     alignItems: 'center',
-    marginBottom: 30,
+    marginBottom: scale(30),
   },
   profileImage: {
-    width: 120,
-    height: 120,
+    width: scale(110),
+    height: scale(110),
     borderRadius: 60,
   },
   cameraButton: {
     position: 'absolute',
-    bottom: 5,
-    right: 5,
+    bottom: scale(4),
+    right: scale(4),
     backgroundColor: '#fff',
     borderRadius: 20,
     padding: 6,
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontFamily: fonts.gilorySemibold,
-    fontSize: 14,
+    fontSize: scale(14),
     color: '#000',
     marginBottom: 6,
   },
@@ -217,12 +217,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#fefefe',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    paddingHorizontal: 25,
-    paddingTop: 20,
-    paddingBottom: 30,
+    paddingHorizontal: scale(25),
+    paddingTop: scale(20),
+    paddingBottom: scale(30),
   },
   modalTitle: {
-    fontSize: 16,
+    fontSize: scale(16),
     fontWeight: '700',
     color: '#000',
     marginBottom: 20,
@@ -234,7 +234,7 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   modalOptionText: {
-    fontSize: 15,
+    fontSize: scale(14),
     color: '#000',
     fontWeight: '500',
   },

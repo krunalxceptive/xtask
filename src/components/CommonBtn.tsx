@@ -3,6 +3,7 @@ import React from 'react';
 import { colors } from '../colors/colors';
 import LinearGradient from 'react-native-linear-gradient';
 import { fonts } from '../font/fonts';
+import { scale } from 'react-native-size-matters';
 
 const CommonBtn = ({title , onPress }) => {
   return (
@@ -25,8 +26,8 @@ const CommonBtn = ({title , onPress }) => {
 
 const styles = StyleSheet.create({ 
   loginButton: {
-    marginTop: 10,
-    marginBottom: 16,
+    marginTop: scale(9), 
+    marginBottom: scale(16),
     borderRadius: 12,
     overflow: 'hidden', 
     shadowColor: '#8B5FA6',
@@ -36,14 +37,14 @@ const styles = StyleSheet.create({
     elevation: 6,
   },
   buttonGradient: {
-    paddingVertical: 14,
+    paddingVertical: scale(14),
     alignItems: 'center',
     justifyContent: 'center',
   },
   loginButtonText: {
     fontFamily: fonts.gilorySemibold,
     color: '#FFFFFF',
-    fontSize: 18, 
+    fontSize: scale(18), 
     fontWeight: '600',
   },
 });

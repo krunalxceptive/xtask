@@ -3,7 +3,7 @@ import {
   View,
   Text,
   StyleSheet,
-  TouchableOpacity,
+  TouchableOpacity, 
   Image,
   TextInput,
   ScrollView,
@@ -20,15 +20,15 @@ import { colors } from '../colors/colors';
 import { useNavigation } from '@react-navigation/native';
 import { launchImageLibrary, launchCamera } from 'react-native-image-picker';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { fonts } from '../font/fonts';
-
+import { fonts } from '../font/fonts'; 
+ 
 const TaskDetails = () => {
   const [selectedTab, setSelectedTab] = useState('Comments');
   const navigation = useNavigation();
     const [modalVisible, setModalVisible] = useState(false);
       const [profileImage, setProfileImage] = useState(
-        require('../assets/images/doc.png'),
-      );  
+        require('../assets/images/user-icons.jpg'),
+      );   
 
      // open camera
       const handleCamera = () => {

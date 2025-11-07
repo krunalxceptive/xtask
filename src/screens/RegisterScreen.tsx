@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import {
   View,
@@ -18,7 +17,8 @@ import { colors } from '../colors/colors';
 import { useNavigation } from '@react-navigation/native';
 import CommonBtn from '../components/CommonBtn';
 import { fonts } from '../font/fonts';
-
+import { scale } from 'react-native-size-matters';
+ 
 const RegisterScreen = () => {
   const [mobileNumber, setMobileNumber] = useState('');
   const [email, setEmail] = useState('');
@@ -26,18 +26,20 @@ const RegisterScreen = () => {
   const [numberOfEmployees, setNumberOfEmployees] = useState('');
   const [purposeOfUse, setPurposeOfUse] = useState('');
   const navigation = useNavigation();
-
+  
   const handleRegister = () => {
+
     console.log('Register pressed', {
       mobileNumber,
-      email, 
+      email,  
       password,
       numberOfEmployees,
       purposeOfUse,
     });
-  };
-
-  return (
+     
+  }; 
+      
+  return ( 
     <KeyboardAvoidingView
       style={styles.container}
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
@@ -51,7 +53,7 @@ const RegisterScreen = () => {
         >
           <Image
             source={require('../assets/images/back.png')}
-            style={{ width: 25, height: 25 }}
+            style={{ width: scale(28), height: scale(28) }}
           />
         </TouchableOpacity>
 
@@ -143,13 +145,11 @@ const RegisterScreen = () => {
               value={purposeOfUse}
               onChangeText={setPurposeOfUse}
             />
-          </View>
-
-            <CommonBtn title={'Register'}  onPress={handleRegister}/>
-
+          </View> 
+            <CommonBtn title={'Register'} onPress={handleRegister}/> 
         </View>
       </ScrollView>
-    </KeyboardAvoidingView>
+    </KeyboardAvoidingView> 
   );
 };
 
@@ -172,22 +172,22 @@ const styles = StyleSheet.create({
   },
   backButton: {
     position: 'absolute',
-    top: 50,
-    left: 15,
+    top: scale(50),
+    left: scale(15), 
     zIndex: 10,
   },
   header: {
     alignItems: 'center',
   },
   title: {  
-    fontSize: 22,
+    fontSize: scale(22),
     fontFamily: fonts.gilorySemibold,
     color: '#FFFFFF',
     marginBottom: 8,
   },
   subtitle: {
     fontFamily: fonts.giloryMedium,
-    fontSize: 15,
+    fontSize: scale(15),
     color: '#FFFFFF',
     textAlign: 'center',
     opacity: 0.9,
@@ -199,20 +199,20 @@ const styles = StyleSheet.create({
     zIndex: 2, // above header
   },
   formScrollContent: {
-    paddingTop: 265, // 👈 increased gap so form starts lower
-    paddingBottom: 80,
+    paddingTop: scale(270), // 👈 increased gap so form starts lower
+    paddingBottom: scale(80),
   },
   formContainer: {
     backgroundColor: '#FFFFFF',
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
-    paddingHorizontal: 20,
-    paddingVertical: 40,
+    paddingHorizontal: scale(20),
+    paddingVertical: scale(40),
   
   },
   avatarContainer: {
     alignItems: 'center',
-    marginBottom: 30,
+    marginBottom: scale(30),
   },
   inputContainer: {
     marginBottom: 16,
@@ -220,9 +220,9 @@ const styles = StyleSheet.create({
   input: {
     backgroundColor: '#FFFFFF',
     borderRadius: 15,
-    paddingHorizontal: 20,
-    paddingVertical: 16,
-    fontSize: 16,
+    paddingHorizontal: scale(20),
+    paddingVertical: scale(16),
+    fontSize: scale(15),
     color: '#333',
     elevation: 3,
   },

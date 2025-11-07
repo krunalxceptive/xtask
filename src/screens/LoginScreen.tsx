@@ -9,13 +9,14 @@ import {
   KeyboardAvoidingView,
   Platform,
   ScrollView, 
-  Image,
+  Image, 
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { colors } from '../colors/colors';
 import { useNavigation } from '@react-navigation/native';
 import CommonBtn from '../components/CommonBtn';
 import { fonts } from '../font/fonts';
+import { scale } from 'react-native-size-matters';
 
 const LoginScreen = () => { 
   const [mobileNumber, setMobileNumber] = useState('');
@@ -24,12 +25,12 @@ const LoginScreen = () => {
 
   const handleLogin = () => {
     navigation.navigate('BottomTabs'); 
-  }; 
+  };  
 
   const handleRegister = () => {
     navigation.navigate('Register');
-  };
-
+  }; 
+  
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" />
@@ -65,7 +66,7 @@ const LoginScreen = () => {
             <View style={styles.avatarContainer}>
               <Image
                 source={require('../assets/images/splash.png')}
-                style={{ width: 110, height: 120 }}
+                style={{ width: scale(110), height: scale(120) }}
               />
             </View>
 
@@ -80,7 +81,7 @@ const LoginScreen = () => {
                 onChangeText={setMobileNumber}
               />
             </View>
-
+ 
             {/* Password Input */}
             <View style={styles.inputContainer}>
               <TextInput
@@ -92,7 +93,6 @@ const LoginScreen = () => {
                 onChangeText={setPassword}
               />
             </View>
-
             <CommonBtn title={'Login'}  onPress={handleLogin}/>
   
             {/* Register Button */} 
@@ -113,11 +113,12 @@ const LoginScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
   },
 
   // Header background stays behind form
   headerBackground: {
+    justifyContent: 'center',
+
     position: 'absolute',
     top: 0,
     left: 0,
@@ -126,18 +127,17 @@ const styles = StyleSheet.create({
     zIndex: 0,
   },
   headerContent: {
-    marginTop: 100,
     alignItems: 'center',
   },
   title: {
     fontFamily: fonts.gilorySemibold,
-    fontSize: 24,
+    fontSize: scale(23),
     color: '#FFFFFF',  
     marginBottom: 10, 
   },
   subtitle: {
     fontFamily: fonts.giloryMedium,
-    fontSize: 16,
+    fontSize: scale(15),
     color: '#FFFFFF',
     textAlign: 'center',
     opacity: 0.9,
@@ -153,23 +153,23 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     paddingHorizontal: 20,
-    paddingTop: 40,
+    paddingTop: scale(36),
     zIndex: 10,
   },
 
   avatarContainer: {
     alignItems: 'center',
-    marginBottom: 25,
+    marginBottom: scale(25),
   },
 
   inputContainer: {
-    marginBottom: 15,
+    marginBottom: scale(15),
   },
   input: {
     backgroundColor: '#FFFFFF',
     borderRadius: 15,
-    paddingHorizontal: 20,
-    paddingVertical: 16,
+    paddingHorizontal: scale(20),
+    paddingVertical: scale(15),
     fontSize: 16,
     color: '#333',
     shadowColor: '#000',
@@ -199,18 +199,18 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 18,
     fontWeight: '600',
-  },
+  }, 
   registerButton: {
     backgroundColor: '#9E9E9E',
     borderRadius: 12,
-    paddingVertical: 14,
-    alignItems: 'center',
+    paddingVertical: scale(14),
+    alignItems: 'center', 
     elevation: 3,
   },
   registerButtonText: {
     fontFamily: fonts.gilorySemibold,
     color: '#FFFFFF',
-    fontSize: 18,
+    fontSize: scale(18),
     fontWeight: '600',
   },
 });
